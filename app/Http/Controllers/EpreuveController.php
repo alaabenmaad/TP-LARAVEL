@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Epreuve;
+use App\Models\Matiere;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -22,8 +23,26 @@ class EpreuveController extends Controller
         //$epreuves = DB::select('select * from epreuve');
 
         $epreuves = Epreuve::query()->select()->get();
+        $matieres = Matiere::all();
 
         return view('epreuve', compact('epreuves'));
+    }
+    public function list()
+    {
+        /*
+        $epreuves = [
+            ['Date' => '23/09/2019', 'Lieu' => '110', 'Code' => 'Algo'],
+            ['Date' => '24/09/2019', 'Lieu' => '112 ', 'Code' => 'Dev Web'],
+        ];
+
+        return view('epreuve', compact('epreuves'));
+        */
+        //$epreuves = DB::select('select * from epreuve');
+
+
+        $matieres = Matiere::all();
+
+        return view('epForm', compact('matieres'));
     }
 
     public function store(Request $req)
@@ -45,6 +64,8 @@ class EpreuveController extends Controller
             'lieu' => 'required',
         ]);
 
+
+        $matieres = Matiere::all();
 
         return view('epForm', compact('errors'));
     }

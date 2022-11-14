@@ -21,13 +21,16 @@ Route::get('/', function () {
 
 
 Route::get('/matiere', [MatiereController::class, 'index'])->name('matiere');
-Route::get('/matiere/add', [MatiereController::class, 'store'])->name('matiere');
-Route::get('/matiere/find', [MatiereController::class, 'findbyidmat']);
+
 
 Route::get('/epreuve', [EpreuveController::class, 'index'])->name('epreuve');
-Route::get('/epreuve/add', [EpreuveController::class, 'store'])->name('epreuve');
 
-Route::get('/insertE', function () {
+
+Route::get('/insertE', [EpreuveController::class, 'list'], function () {
     return view('epForm');
 });
+Route::get('/insertM', function () {
+    return view('matForm');
+});
 Route::post('/insertE', [EpreuveController::class, 'store']);
+Route::post('/insertM', [MatiereController::class, 'store']);

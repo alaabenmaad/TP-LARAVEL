@@ -15,10 +15,6 @@
         {{ csrf_field() }}
         <h1 class="h3" style="text-align: center;">Ajouter Une Epreuve</h1>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="numepreuve"> Matiere ID</label>
-                <input type="text" name="code matiere" class="form-control" id="numepreuve">
-            </div>
             <div class="form-group col-md-4">
                 <label for="date">Date Epreuve</label>
                 <input type="date" name="date" class="form-control" id="date">
@@ -26,6 +22,14 @@
             <div class="form-group col-md-2">
                 <label for="Lieu">Lieu</label>
                 <input type="text" name="Lieu" class="form-control" id="Lieu">
+            </div>
+            <div class="form-group col-md-2">
+                <select class="form-control" name="codemat" required>
+                    <option>----Selectionez----</option>
+                    @foreach($matieres->all() as $m)
+                    <option value="{{ $m->id }}">{{ $m->code }}</option>
+                    @endforeach
+                </select>
             </div>
 
         </div>

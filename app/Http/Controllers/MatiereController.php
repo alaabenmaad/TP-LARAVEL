@@ -17,31 +17,44 @@ class MatiereController extends Controller
         ];
         */
         //$matieres = DB::table('matiere')->get();
-        //$matieres = DB::select('select * from matiere');
-        $matieres = Matiere::all();
+        $matieres = DB::select('select * from matiere');
+        // $matieres = Matiere::all();
         return view('matiere', compact('matieres'));
     }
 
-    public function store()
+    public function store(Request $req)
     {
         //DB::insert('insert into matiere (code, libelle, Coefficient) values (?, ?, ?)', ['algo', 'algorithmique', '3']);
         //DB::insert('insert into epreuve (date, lieu, code) values (?, ?, ?)', ['DevWeb', 'Developpemnt Web', '3']);
+        /*
         $mat = new Matiere;
         $mat->code = "2CN";
         $mat->libelle = "2cnnnn";
         $mat->Coefficient = "2";
-
         $mat->save();
+        */
+        $req->validate([
+            'code' => 'required|max:25',
+            'libelle' => 'required',
+            'coff' => 'required',
 
-        return redirect('matiere');
+        ]);
+
+
+        $mat = new Matiere;
+        $mat->code = $req->input('code');
+        $mat->libelle = $req->input('libelle');
+        $mat->Coefficient = $req->input('coff');
+        $mat->save();
+        return redirect()->route('matiere');
     }
 
     public function findbyidmat()
     {
         //$eps = App\Models\Matiere::where('code', '2CN')->epreuves();
-         //$eps = App\Models\Matiere::find(1)->epreuves();
-         //$eps = App\Models\Matiere::epreuves()->where('code', '2CN')->first();
-         //$eps = App\Models\Matiere::where('code', '2CN')->first()->epreuves()->get()
-        
+        //$eps = App\Models\Matiere::find(1)->epreuves();
+        //$eps = App\Models\Matiere::epreuves()->where('code', '2CN')->first();
+        //$eps = App\Models\Matiere::where('code', '2CN')->first()->epreuves()->get()
+
     }
 }
