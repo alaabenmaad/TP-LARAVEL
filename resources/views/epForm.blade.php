@@ -16,12 +16,16 @@
         <h1 class="h3" style="text-align: center;">Ajouter Une Epreuve</h1>
         <div class="form-row">
             <div class="form-group col-md-4">
+                <label for="date">Code Epreuve</label>
+                <input type="text" name="code" class="form-control" id="date">
+            </div>
+            <div class="form-group col-md-4">
                 <label for="date">Date Epreuve</label>
                 <input type="date" name="date" class="form-control" id="date">
             </div>
             <div class="form-group col-md-2">
                 <label for="Lieu">Lieu</label>
-                <input type="text" name="Lieu" class="form-control" id="Lieu">
+                <input type="text" name="lieu" class="form-control" id="Lieu">
             </div>
             <div class="form-group col-md-2">
                 <select class="form-control" name="codemat" required>

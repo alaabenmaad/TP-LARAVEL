@@ -59,15 +59,21 @@ class EpreuveController extends Controller
         return redirect('epreuve');
         */
         $req->validate([
-            'matiere_id' => 'required|max:25',
+
             'date' => 'required',
             'lieu' => 'required',
         ]);
 
+        $ep = new Epreuve;
+        $ep->date = $req->input(('date'));
+        $ep->lieu = $req->input(('lieu'));
+        $ep->code = $req->input(('code'));
+        $ep->codemat = $req->input(('codemat'));
+        $ep->save();
+        return redirect('epreuve');
 
-        $matieres = Matiere::all();
 
-        return view('epForm', compact('errors'));
+        //return view('epForm', compact('errors'));
     }
 
     //$eps = App\Models\Epreuve::find(1)->matiere()->first()->libelle;
