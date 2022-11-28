@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EpreuveController;
 use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\MatiererController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,7 @@ Route::get('/', function () {
 })->name('cards');
 
 
+
 Route::get('/matiere', [MatiereController::class, 'index'])->name('matiere');
 
 
@@ -31,6 +34,10 @@ Route::get('/insertE', [EpreuveController::class, 'list'], function () {
 });
 Route::get('/insertM', function () {
     return view('matForm');
-});
+})->name('matForm');
+/*
 Route::post('/insertE', [EpreuveController::class, 'store']);
 Route::post('/insertM', [MatiereController::class, 'store']);
+*/
+Route::resource('contacts', ContactController::class);
+Route::resource('matierees', MatiererController::class);

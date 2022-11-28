@@ -1,9 +1,11 @@
 @extends('template')
 @section('content')
+
+
 <div class="container" style="margin: 130px;border: 4px solid #0062cc;
         border-radius: 10px;padding: 10px;top: 124px;position: absolute;">
 
-    <form method="post" action="\insertM">
+    <form method="post" action="/matierees">
         {{ csrf_field() }}
         <h1 class="h3" style="text-align: center;">Ajouter Une Matiere</h1>
         <div class="form-row">
